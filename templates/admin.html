@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin - Posebni Datumi</title>
+</head>
+<body>
+    <h1>Upravljanje Posebnim Datumima</h1>
+    <form method="POST">
+        Datum: <input type="date" name="datum" required><br>
+        Početak: <input type="number" name="start" min="0" max="23" required><br>
+        Kraj: <input type="number" name="end" min="0" max="23" required><br>
+        <button type="submit">Dodaj/Izmijeni</button>
+    </form>
+    <h2>Postojeći posebni datumi:</h2>
+    <ul>
+        {% for datum, (start, end) in posebni.items() %}
+        <li>{{ datum }}: {{ start }} - {{ end }} 
+            <a href="/obrisi/{{ datum }}">Obriši</a>
+        </li>
+        {% endfor %}
+    </ul>
+    <a href="/">← Nazad</a>
+</body>
+</html>
