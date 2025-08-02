@@ -12,14 +12,6 @@ RADNO_VREME = {
 
 DATA_FILE = "data.json"
 
-# 🔑 Funkcija za konverziju latinice u ćirilicu
-def latinica_u_cirilicu(tekst):
-    mapa = str.maketrans(
-        "abvgdđžzijklmnoprstćufhcčšABVGDĐŽZIJKLMNOPRSTĆUFHCČŠ",
-        "абвгдђжзижјклмнопрстћуфхцчшАБВГДЂЖЗИЈКЛМНОПРСТЋУФХЦЧШ"
-    )
-    return tekst.translate(mapa)
-
 def ucitaj_posebne_datume():
     try:
         with open(DATA_FILE, "r", encoding="utf-8") as f:
@@ -53,14 +45,11 @@ def index():
     if start is None:
         poruka = "Danas je nedelja. Ordinacija ne radi."
     elif not (start <= sat < end):
-        poruka = f"Radno vrijeme ordinacije je od {start} do {end} časova."
+        poruka = f"Radno vrijeme ordinaacije je od {start} do {end} časova."
     else:
-        poruka = "Ordinacija je trenutno otvorena."
+        poruka = "Ordinaacija je trenutno otvorena."
 
-    # ✅ Konverzija u ćirilicu za bolji TTS izgovor
-    poruka_cir = latinica_u_cirilicu(poruka)
-
-    return render_template("index.html", poruka=poruka_cir)
+    return render_template("index.html", poruka=poruka)
 
 @app.route("/admin", methods=["GET", "POST"])
 def admin():
