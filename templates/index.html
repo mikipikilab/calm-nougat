@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Ordinacija - Radno Vrijeme</title>
+    <script src="https://code.responsivevoice.org/responsivevoice.js?key=J55NcMXq"></script>
 </head>
 <body>
     <h1>{{ poruka }}</h1>
@@ -10,16 +11,12 @@
 
     <script>
         function speakMessage() {
-            const msg = new SpeechSynthesisUtterance("{{ poruka }}");
-            msg.lang = 'sr-RS';
-            window.speechSynthesis.speak(msg);
+            responsiveVoice.speak("{{ poruka }}", "Serbian Female");
         }
 
-        // Automatsko puštanje na load (neki browseri traže klik)
+        // Automatski govor pri učitavanju stranice
         window.addEventListener('load', () => {
-            const msg = new SpeechSynthesisUtterance("{{ poruka }}");
-            msg.lang = 'sr-RS';
-            window.speechSynthesis.speak(msg);
+            responsiveVoice.speak("{{ poruka }}", "Serbian Female");
         });
     </script>
 </body>
