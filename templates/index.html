@@ -6,6 +6,21 @@
 </head>
 <body>
     <h1>{{ poruka }}</h1>
-    <a href="/admin">Admin panel</a>
+    <button onclick="speakMessage()">🔊 Pusti govor</button>
+
+    <script>
+        function speakMessage() {
+            const msg = new SpeechSynthesisUtterance("{{ poruka }}");
+            msg.lang = 'sr-RS';
+            window.speechSynthesis.speak(msg);
+        }
+
+        // Automatsko puštanje na load (neki browseri traže klik)
+        window.addEventListener('load', () => {
+            const msg = new SpeechSynthesisUtterance("{{ poruka }}");
+            msg.lang = 'sr-RS';
+            window.speechSynthesis.speak(msg);
+        });
+    </script>
 </body>
 </html>
