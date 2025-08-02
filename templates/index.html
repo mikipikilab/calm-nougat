@@ -9,15 +9,15 @@
     <h1>{{ poruka }}</h1>
     <button onclick="speakMessage()">🔊 Pusti govor</button>
 
-<script>
-    function speakMessage() {
-        responsiveVoice.speak("{{ poruka }}", "Serbian Female", {rate: 1, pitch: 1, volume: 1});
-    }
+    <script>
+        function speakMessage() {
+            responsiveVoice.speak("{{ poruka }}", "Serbian Female");
+        }
 
-    window.addEventListener('load', () => {
-        responsiveVoice.speak("{{ poruka }}", "Serbian Female", {rate: 1, pitch: 1, volume: 1});
-    });
-</script>
-
+        // Automatski govor pri učitavanju stranice
+        window.addEventListener('load', () => {
+            responsiveVoice.speak("{{ poruka }}", "Serbian Female");
+        });
+    </script>
 </body>
 </html>
